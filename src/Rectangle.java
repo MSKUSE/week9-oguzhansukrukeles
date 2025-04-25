@@ -1,30 +1,24 @@
-public class Rectangle extends Shape{
+public class Rectangle extends Shape implements Drawable{
 
-    private int sideA, sideB;
+    int sideA = 0,sideB =0;
 
-    public Rectangle(){
-        super();
-    }
-    public Rectangle(String color, int sideA, int sideB){
-        super(color);
-        this.sideA = 1;
-        this.sideB = 1;
+    public Rectangle() {
     }
 
-    public int getSideA() {
-        return sideA;
-    }
-
-    public void setSideA(int sideA) {
+    public Rectangle(int sideA, int sideB) {
         this.sideA = sideA;
-    }
-
-    public int getSideB() {
-        return sideB;
-    }
-
-    public void setSideB(int sideB) {
         this.sideB = sideB;
+    }
+
+    public Rectangle(String color, int sideA, int sideB) {
+        super(color);
+        this.sideA = sideA;
+        this.sideB = sideB;
+    }
+
+    @Override
+    public double perimeter() {
+        return 2*(this.sideA + this.sideB);
     }
 
     @Override
@@ -32,21 +26,6 @@ public class Rectangle extends Shape{
         return sideA * sideB;
     }
 
-    @Override
-    public double perimeter() {
-        return 2*(sideA + sideB);
-    }
-
-    @Override
-    public String toString() {
-        return super.toString() +
-                " Rectangle{" +
-                "sideA=" + sideA +
-                ", sideB=" + sideB +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (!(obj instanceof Rectangle)) return false;
@@ -54,4 +33,8 @@ public class Rectangle extends Shape{
         return sideA == rectangle.sideA && sideB == rectangle.sideB;
     }
 
+    @Override
+    public void draw() {
+        System.out.println("A rectangle is drawn");
+    }
 }
